@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        {% load staticfiles %}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="{{ STATIC_URL }}normalize.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}narrow-bootstrap.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}tree-editor.css">
+        <script src="{{ STATIC_URL }}vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <nav class = 'navbar'>
+         <ul class = 'nav nav-pills'>
+          <li class = 'navitem'><a>Base</a></li>
+          <li class = 'navitem'><a>New</a></li>
+          <li class = 'navitem'><a>Type</a></li>
+          <li class = 'rightnavitem'><a href='/save_tree/{{ tree.id }}/' class='save'>Save</a></li>
+         </ul>
+        </nav>
+        <div class = 'nest'>
+         <ul class = 'nav nav-pills'>
+          <li class = 'nestlevel'>Tree Editor > </li>
+          <li class = 'nestlevel'>Base > </li>
+          <li class = 'nestlevel'>New > </li>
+          <li class = 'nestlevel'>Type > </li>
+         </ul>
+        </div>
+        <div class = 'container'>
+          <div class = 'page'>
+
+
+            <div class = 'item-container'>
+            <div class = 'item offset-0'>
+              <form class = 'item-form'>
+              <span class = 'item-button-group'>
+                <button class = 'item-button-1'>Del</button>
+                <button class = 'item-button-2'>Jmp</button>
+                <button class = 'item-button-3 new-sibling-button'>Sib</button>
+                <button class = 'item-button-4 new-child-button'>Ch</button>
+              </span>
+              <span class = 'item-textarea-container'>
+               <textarea rows='1' class = 'item-textarea'></textarea>
+               <input type = 'hidden' class = 'item-nest-level' value = '1'>
+               <input type = 'hidden' class = 'item-id' value = '1'>
+               <input type = 'hidden' class = 'item-order' value = '1'>
+              </span>
+              </form>
+            </div>
+            </div>
+            <!-- contenteditabe instead of textarea
+            <div class = 'item-container'>
+            <div class = 'item offset-0'>
+              <form class = 'item-form'>
+              <div class = 'item-button-group'>
+                <button class = 'item-button-1'>Del</button>
+                <button class = 'item-button-2'>Jmp</button>
+                <button class = 'item-button-3 new-sibling-button'>Sib</button>
+                <button class = 'item-button-4 new-child-button'>Ch</button>
+              </div>
+              <div class = 'item-editable-div-container'>
+               <div contentEditable='true' class = 'item-editable-div'><strong>This is bold</strong><br>This is not</div>
+              </div>
+              </form>
+            </div>
+            </div>
+            !-->
+
+            {% for node, level in nodes %}
+            <div class = 'item-container'>
+            <div class = 'item offset-{{ level }}'>
+              <form class = 'item-form'>
+              <span class = 'item-button-group'>
+                <button class = 'item-button-1'>Del</button>
+                <button class = 'item-button-2'>Jmp</button>
+                <button class = 'item-button-3 new-sibling-button'>Sib</button>
+                <button class = 'item-button-4 new-child-button'>Ch</button>
+              </span>
+              <span class = 'item-textarea-container'>
+               <textarea rows='1' class = 'item-textarea'>{{ node.content }}</textarea>
+               <input type = 'hidden' class = 'item-nest-level' value = '{{ node.nest_level }}'>
+               <input type = 'hidden' class = 'item-id' value = '{{ node.id }}'>
+               <input type = 'hidden' class = 'item-order' value = '{{ node.order }}'>
+              </span>
+              </form>
+            </div>
+            </div>
+            {% endfor %}
+        <div class = 'footer'>
+        </div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="{{ STATIC_URL }}vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script src="{{ STATIC_URL }}plugins.js"></script>
+        <script src="{{ STATIC_URL }}jquery.autosize.js"></script>
+        <script src="{{ STATIC_URL }}main.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>
+    </body>
+</html>

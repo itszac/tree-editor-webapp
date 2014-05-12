@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load staticfiles %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+    <title>{% block title %}Tree Editor{% endblock %}</title>
+    {% block header_resources %}
+
+    <!-- Bootstrap core CSS -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ STATIC_URL }}jumbotron-narrow.css" rel="stylesheet">
+    {% endblock %}
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          {% block navs %}
+          {% if active == 'home' %}
+          <li class="active"><a href="#">Home</a></li>
+          {% else %}
+          <li><a href="/">Home</a></li>
+          {% endif %}
+          <li><a href="#">Example</a></li>
+          {% if user.is_authenticated %}
+          {% if active == 'my_trees' %}
+          <li class = 'active'><a href='/my_trees'>Your Trees</a></li>
+          {% else %}
+          <li><a href='/my_trees'>Your Trees</a></li>
+          {% endif %}
+          <li><a href='/logout'>Log Out</a></li>
+          {% else %}
+          {% if active == 'sign_up' %}
+          <li class="active"><a href="/sign_up">Sign Up</a></li>
+          {% else %}
+          <li><a href="/sign_up">Sign Up</a></li>
+          {% endif %}
+          <li><a id = 'signin-button' href="#">Sign In</a></li>
+          {% endif %}
+          {% endblock %}
+        </ul>
+        <h3 class="text-muted">Tree Editor</h3>
+        {% if not user.is_authenticated %}
+        <form class="form-inline pull-right" id = 'signin-form' role="form">
+  <div class="form-group">
+    <label class="sr-only" for="exampleInputEmail2">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
+  </div>
+  <div class="form-group">
+    <label class="sr-only" for="exampleInputPassword2">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+  </div>
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>
+       {% endif %}
+      </div>
+      {% block content %}
+      <div class="jumbotron">
+        <h1>Tree Editor</h1>
+        <p class="lead">Lots of information you want to record is heirarchial.  Using a tree instead of a list or document gives structure to your notes, tasks, or ideas</p>
+        <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a>
+        <a class="btn btn-lg btn-success" href="#" role="button">Start a tree</a></p>
+      </div>
+
+      <div class="row marketing">
+        <div class="col-lg-6">
+          <h4>Notes</h4>
+          <p>Meetings, lectures, and books often jump around between topics.</p>
+
+          <h4>To-do lists</h4>
+          <p>Tasks have subtasks, and sometimes have to be done in a certain order.  </p>
+
+        </div>
+
+        <div class="col-lg-6">
+          <h4>Project Mapping</h4>
+          <p>Flesh out ideas and get a glimpse of what your project will look like.  </p>
+
+          <h4>Compare Alternatives</h4>
+          <p>Compare different versions of paragraphs and ordering to make your writing more persuasive.  </p>
+        </div>
+      </div>
+      {% endblock %}
+
+      <div class="footer">
+        <p><a href= '//itsz.ac'>itsz.ac</a></p>
+      </div>
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the enof the document so the pages load faster -->
+    
+{% block body_resources %}
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="{{ STATIC_URL }}vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script src="{{ STATIC_URL }}plugins.js"></script>
+        <script src="{{ STATIC_URL }}jquery.autosize.js"></script>
+        <script src="{{ STATIC_URL }}main.js"></script>
+  {% endblock %}
+  </body>
+</html>
+

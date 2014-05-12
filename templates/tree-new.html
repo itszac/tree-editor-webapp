@@ -1,0 +1,89 @@
+{% extends 'narrow-bootstrap-template.html' %}
+{% block header_resources %}
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}jumbotron-narrow.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ STATIC_URL }}tree-editor.css">
+{% endblock %}
+{% block content %}
+        <div class = 'toolbar'>
+         <div class = 'row'>
+         <div class = 'col-md-5 col-md-offset-7'>
+         <ul class = 'nav nav-toolbar'>
+          <li class = 'navitem'><a>Type</a></li>
+          <li class = 'rightnavitem'><a href='#' class='save'><span class="glyphicon glyphicon-search"></span></a></li>
+          <li class = 'rightnavitem'><a href='#' class='save'><span class="glyphicon glyphicon-plus"></span></a></li>
+          <li class = 'rightnavitem'><a href='/save_tree/{{ tree.id }}/' class='save'><span class="glyphicon glyphicon-save"></span></a></li>
+         </ul>
+         </div>
+         </div>
+        </div>
+          <div class = 'page'>
+
+<!-- 
+            <div class = 'item-container'>
+            <div class = 'item offset-0'>
+              <form class = 'item-form'>
+              <span class = 'item-button-group'>
+                <button class = 'item-button-1'>Del</button>
+                <button class = 'item-button-2'>Jmp</button>
+                <button class = 'item-button-3 new-sibling-button'>Sib</button>
+                <button class = 'item-button-4 new-child-button'>Ch</button>
+              </span>
+              <span class = 'item-textarea-container'>
+               <textarea rows='1' class = 'item-textarea'></textarea>
+               <input type = 'hidden' class = 'item-nest-level' value = '0'>
+               <input type = 'hidden' class = 'item-id' value = '1'>
+               <input type = 'hidden' class = 'item-order' value = '1'>
+              </span>
+              </form>
+            </div>
+            </div>
+             contenteditabe instead of textarea 
+            <div class = 'item-container'>
+            <div class = 'item offset-0'>
+              <form class = 'item-form'>
+              <div class = 'item-button-group'>
+                <button class = 'item-button-1'>Del</button>
+                <button class = 'item-button-2'>Jmp</button>
+                <button class = 'item-button-3 new-sibling-button'>Sib</button>
+                <button class = 'item-button-4 new-child-button'>Ch</button>
+              </div>
+              <div class = 'item-editable-div-container'>
+               <div contentEditable='true' class = 'item-editable-div'></div>
+              </div>
+               <input type = 'hidden' class = 'item-nest-level' value = '0'>
+               <input type = 'hidden' class = 'item-id' value = '1'>
+               <input type = 'hidden' class = 'item-order' value = '1'>
+              </form>
+            </div>
+!-->
+            {% for node, level in nodes %}
+            <div class = 'item-container'>
+            <div class = 'item offset-{{ level }}'>
+              <form class = 'item-form'>
+              <span class = 'item-button-group'>
+                <button class = 'item-button-1 delete-button'>Del</button>
+                <button class = 'item-button-1a confirm-delete-button'>Confirm</button>
+                <button class = 'item-button-2 jump-button'>Jmp</button>
+                <button class = 'item-button-3 new-sibling-button'>Sib</button>
+                <button class = 'item-button-4 new-child-button'>Ch</button>
+              </span>
+              <span class = 'item-textarea-container'>
+               <textarea rows='1' class = 'item-textarea'>{{ node.content }}</textarea>
+               <input type = 'hidden' class = 'item-nest-level' value = '{{ node.nest_level }}'>
+               <input type = 'hidden' class = 'item-id' value = '{{ node.id }}'>
+               <input type = 'hidden' class = 'item-order' value = '{{ node.order }}'>
+              </span>
+              </form>
+            </div>
+            </div>
+            {% endfor %}
+
+{% endblock %}
+{% block body_resources %}
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="{{ STATIC_URL }}vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script src="{{ STATIC_URL }}plugins.js"></script>
+        <script src="{{ STATIC_URL }}jquery.autosize.js"></script>
+        <script src="{{ STATIC_URL }}main.js"></script>
+{% endblock %}
