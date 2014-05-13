@@ -8,7 +8,7 @@ import trees.views
 
 urlpatterns = patterns('',
     url(r'^$', 'trees.views.index'),
-    url(r'^about/', 'trees.views.about'),
+    url(r'^example/', 'trees.views.example'),
     url(r'^trees/', include(trees.urls)),
     url(r'^sign_up/', 'trees.views.new_user'),
     url(r'^my_trees/', 'trees.views.user_trees'),

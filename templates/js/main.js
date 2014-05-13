@@ -108,7 +108,7 @@ $(document).ready(function(){
     $('.delete-button').click(function (event)  {
         event.preventDefault();
         $(this).hide();
-        $(this).siblings('.jump-button').hide();
+        $(this).siblings('.image-upload-button').hide();
         $(this).siblings('.confirm-delete-button').show();
     });
 
@@ -119,9 +119,9 @@ $(document).ready(function(){
     });
 
 
-    $('.jump-button').click(function (event)  {
+    $('.image-upload-button').click(function (event)  {
         event.preventDefault();
-        var item = $(this).closest('.item').hide();
+        $(this).closest('.item').find('.item-image-upload').click();
     });
 
     $('.save').click(function (event) {

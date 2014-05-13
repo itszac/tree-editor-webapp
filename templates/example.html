@@ -1,0 +1,248 @@
+{% extends 'narrow-bootstrap-template.html' %}
+{% block header_resources %}
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}jumbotron-narrow.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ STATIC_URL }}tree-editor.css">
+{% endblock %}
+{% block content %}
+        <div class = 'toolbar'>
+         <div class = 'row'>
+         <div class = 'col-md-6 col-md-offset-6'>
+         <ul class = 'nav nav-toolbar'>
+          <li class = 'rightnavitem'><a href='#' class='save'><span class="glyphicon glyphicon-search"></span></a></li>
+          <li class = 'rightnavitem'><a href='#' class='save'><span class="glyphicon glyphicon-plus"></span></a></li>
+          <li class = 'rightnavitem'><a href='/save_tree/{{ tree.id }}/' class='save'><span class="glyphicon glyphicon-save"></span></a></li>
+          <li class = 'rightnavitem' id = 'saved'><a href='#'>Saved!</a></li>
+         </ul>
+         </div>
+         </div>
+        </div>
+          <div class = 'page'>
+
+<!-- 
+            <div class = 'item-container'>
+            <div class = 'item offset-0'>
+              <form class = 'item-form'>
+              <span class = 'item-button-group'>
+                <button class = 'item-button-1'>Del</button>
+                <button class = 'item-button-2'>Jmp</button>
+                <button class = 'item-button-3 new-sibling-button'>Sib</button>
+                <button class = 'item-button-4 new-child-button'>Ch</button>
+              </span>
+              <span class = 'item-textarea-container'>
+               <textarea rows='1' class = 'item-textarea'></textarea>
+               <input type = 'hidden' class = 'item-nest-level' value = '0'>
+               <input type = 'hidden' class = 'item-id' value = '1'>
+               <input type = 'hidden' class = 'item-order' value = '1'>
+              </span>
+              </form>
+            </div>
+            </div>
+             contenteditabe instead of textarea 
+            <div class = 'item-container'>
+            <div class = 'item offset-0'>
+              <form class = 'item-form'>
+              <div class = 'item-button-group'>
+                <button class = 'item-button-1'>Del</button>
+                <button class = 'item-button-2'>Jmp</button>
+                <button class = 'item-button-3 new-sibling-button'>Sib</button>
+                <button class = 'item-button-4 new-child-button'>Ch</button>
+              </div>
+              <div class = 'item-editable-div-container'>
+               <div contentEditable='true' class = 'item-editable-div'></div>
+              </div>
+               <input type = 'hidden' class = 'item-nest-level' value = '0'>
+               <input type = 'hidden' class = 'item-id' value = '1'>
+               <input type = 'hidden' class = 'item-order' value = '1'>
+              </form>
+            </div>
+!-->
+            <div class = 'item-container'>
+            <div class = 'item offset-0'>
+              <form class = 'item-form'>
+              <span class = 'item-button-group'>
+                <button class = 'item-button-1 delete-button'>Del</button>
+                <button class = 'item-button-1a confirm-delete-button'>Confirm</button>
+                <button class = 'item-button-2 image-upload-button'>Img</button>
+                <button class = 'item-button-3 new-sibling-button'>Sib</button>
+                <button class = 'item-button-4 new-child-button'>Ch</button>
+              </span>
+              <span class = 'item-textarea-container'>
+               <textarea rows='1' class = 'item-textarea'>This is an example tree</textarea>
+               <input type = 'file' class = 'item-image-upload'>
+               <input type = 'hidden' class = 'item-nest-level' value = '0'>
+               <input type = 'hidden' class = 'item-id' value = '1'>
+               <input type = 'hidden' class = 'item-order' value = '0'>
+              </span>
+              </form>
+            </div>
+            </div>
+            <div class = 'item-container'>
+            <div class = 'item offset-0'>
+              <form class = 'item-form'>
+              <span class = 'item-button-group'>
+                <button class = 'item-button-1 delete-button'>Del</button>
+                <button class = 'item-button-1a confirm-delete-button'>Confirm</button>
+                <button class = 'item-button-2 image-upload-button'>Img</button>
+                <button class = 'item-button-3 new-sibling-button'>Sib</button>
+                <button class = 'item-button-4 new-child-button'>Ch</button>
+              </span>
+              <span class = 'item-textarea-container'>
+               <textarea rows='1' class = 'item-textarea'>Tree controls</textarea>
+               <input type = 'file' class = 'item-image-upload'>
+               <input type = 'hidden' class = 'item-nest-level' value = '0'>
+               <input type = 'hidden' class = 'item-id' value = '1'>
+               <input type = 'hidden' class = 'item-order' value = '0'>
+              </span>
+              </form>
+            </div>
+            </div>
+            <div class = 'item-container'>
+            <div class = 'item offset-1'>
+              <form class = 'item-form'>
+              <span class = 'item-button-group'>
+                <button class = 'item-button-1 delete-button'>Del</button>
+                <button class = 'item-button-1a confirm-delete-button'>Confirm</button>
+                <button class = 'item-button-2 image-upload-button'>Img</button>
+                <button class = 'item-button-3 new-sibling-button'>Sib</button>
+                <button class = 'item-button-4 new-child-button'>Ch</button>
+              </span>
+              <span class = 'item-textarea-container'>
+               <textarea rows='1' class = 'item-textarea'>Next to each node are four buttons: Del, Img, Sib, and Ch</textarea>
+               <input type = 'file' class = 'item-image-upload'>
+               <input type = 'hidden' class = 'item-nest-level' value = '1'>
+               <input type = 'hidden' class = 'item-id' value = '1'>
+               <input type = 'hidden' class = 'item-order' value = '0'>
+              </span>
+              </form>
+            </div>
+            </div>
+            <div class = 'item-container'>
+            <div class = 'item offset-2'>
+              <form class = 'item-form'>
+              <span class = 'item-button-group'>
+                <button class = 'item-button-1 delete-button'>Del</button>
+                <button class = 'item-button-1a confirm-delete-button'>Confirm</button>
+                <button class = 'item-button-2 image-upload-button'>Img</button>
+                <button class = 'item-button-3 new-sibling-button'>Sib</button>
+                <button class = 'item-button-4 new-child-button'>Ch</button>
+              </span>
+              <span class = 'item-textarea-container'>
+               <textarea rows='1' class = 'item-textarea'>Del, or delete, lets you delete a node.  There is a confirm delete button, so you don't accidently click.</textarea>
+               <input type = 'file' class = 'item-image-upload'>
+               <input type = 'hidden' class = 'item-nest-level' value = '2'>
+               <input type = 'hidden' class = 'item-id' value = '1'>
+               <input type = 'hidden' class = 'item-order' value = '0'>
+              </span>
+              </form>
+            </div>
+            </div>
+            <div class = 'item-container'>
+            <div class = 'item offset-2'>
+              <form class = 'item-form'>
+              <span class = 'item-button-group'>
+                <button class = 'item-button-1 delete-button'>Del</button>
+                <button class = 'item-button-1a confirm-delete-button'>Confirm</button>
+                <button class = 'item-button-2 image-upload-button'>Img</button>
+                <button class = 'item-button-3 new-sibling-button'>Sib</button>
+                <button class = 'item-button-4 new-child-button'>Ch</button>
+              </span>
+              <span class = 'item-textarea-container'>
+               <textarea rows='1' class = 'item-textarea'>Img, or image, allows you to upload an image instead of inserting text</textarea>
+               <input type = 'file' class = 'item-image-upload'>
+               <input type = 'hidden' class = 'item-nest-level' value = '2'>
+               <input type = 'hidden' class = 'item-id' value = '1'>
+               <input type = 'hidden' class = 'item-order' value = '0'>
+              </span>
+              </form>
+            </div>
+            </div>
+            <div class = 'item-container'>
+            <div class = 'item offset-2'>
+              <form class = 'item-form'>
+              <span class = 'item-button-group'>
+                <button class = 'item-button-1 delete-button'>Del</button>
+                <button class = 'item-button-1a confirm-delete-button'>Confirm</button>
+                <button class = 'item-button-2 image-upload-button'>Img</button>
+                <button class = 'item-button-3 new-sibling-button'>Sib</button>
+                <button class = 'item-button-4 new-child-button'>Ch</button>
+              </span>
+              <span class = 'item-textarea-container'>
+               <textarea rows='1' class = 'item-textarea'>Sib, or sibling, adds a node on the same level as the node whose sib button was pressed</textarea>
+               <input type = 'file' class = 'item-image-upload'>
+               <input type = 'hidden' class = 'item-nest-level' value = '2'>
+               <input type = 'hidden' class = 'item-id' value = '1'>
+               <input type = 'hidden' class = 'item-order' value = '0'>
+              </span>
+              </form>
+            </div>
+            </div>
+            <div class = 'item-container'>
+            <div class = 'item offset-2'>
+              <form class = 'item-form'>
+              <span class = 'item-button-group'>
+                <button class = 'item-button-1 delete-button'>Del</button>
+                <button class = 'item-button-1a confirm-delete-button'>Confirm</button>
+                <button class = 'item-button-2 image-upload-button'>Img</button>
+                <button class = 'item-button-3 new-sibling-button'>Sib</button>
+                <button class = 'item-button-4 new-child-button'>Ch</button>
+              </span>
+              <span class = 'item-textarea-container'>
+               <textarea rows='1' class = 'item-textarea'>Ch, or child, adds an indented child node</textarea>
+               <input type = 'file' class = 'item-image-upload'>
+               <input type = 'hidden' class = 'item-nest-level' value = '2'>
+               <input type = 'hidden' class = 'item-id' value = '1'>
+               <input type = 'hidden' class = 'item-order' value = '0'>
+              </span>
+              </form>
+            </div>
+            </div>
+            <div class = 'item-container'>
+            <div class = 'item offset-1'>
+              <form class = 'item-form'>
+              <span class = 'item-button-group'>
+                <button class = 'item-button-1 delete-button'>Del</button>
+                <button class = 'item-button-1a confirm-delete-button'>Confirm</button>
+                <button class = 'item-button-2 image-upload-button'>Img</button>
+                <button class = 'item-button-3 new-sibling-button'>Sib</button>
+                <button class = 'item-button-4 new-child-button'>Ch</button>
+              </span>
+              <span class = 'item-textarea-container'>
+               <textarea rows='1' class = 'item-textarea'>On top is a toolbar</textarea>
+               <input type = 'file' class = 'item-image-upload'>
+               <input type = 'hidden' class = 'item-nest-level' value = '1'>
+               <input type = 'hidden' class = 'item-id' value = '1'>
+               <input type = 'hidden' class = 'item-order' value = '0'>
+              </span>
+              </form>
+            </div>
+            </div>
+            <div class = 'item-container'>
+            <div class = 'item offset-2'>
+              <form class = 'item-form'>
+              <span class = 'item-button-group'>
+                <button class = 'item-button-1 delete-button'>Del</button>
+                <button class = 'item-button-1a confirm-delete-button'>Confirm</button>
+                <button class = 'item-button-2 image-upload-button'>Img</button>
+                <button class = 'item-button-3 new-sibling-button'>Sib</button>
+                <button class = 'item-button-4 new-child-button'>Ch</button>
+              </span>
+              <span class = 'item-textarea-container'>
+               <textarea rows='1' class = 'item-textarea'>The save icon lets you save changes.  'Saved!' will flash when the changes hit the server, and confirms that all nodes were saved'</textarea>
+               <input type = 'file' class = 'item-image-upload'>
+               <input type = 'hidden' class = 'item-nest-level' value = '2'>
+               <input type = 'hidden' class = 'item-id' value = '1'>
+               <input type = 'hidden' class = 'item-order' value = '0'>
+              </span>
+              </form>
+            </div>
+            </div>
+
+{% endblock %}
+{% block body_resources %}
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="{{ STATIC_URL }}vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script src="{{ STATIC_URL }}plugins.js"></script>
+        <script src="{{ STATIC_URL }}jquery.autosize.js"></script>
+        <script src="{{ STATIC_URL }}main.js"></script>
+{% endblock %}

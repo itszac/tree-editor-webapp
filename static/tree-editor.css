@@ -133,25 +133,6 @@ nav li {
     margin-right: 10px;
 }
 
-html {
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    text-align: center;
-    background-color: lightgray;
-    margin: 0;
-    padding: 0;
-}
-
-.container {
-    width: 1024px;
-    box-shadow: 10px 10px 10px 5px darkgray;
-    text-align: left;
-    margin: 0 auto;
-}
-
 .nest {
     width: 100%;
     height: 40px;
@@ -171,6 +152,50 @@ body {
     list-style: none;
 }
 
+.toolbar a {
+    text-decoration: none;
+    color: black;
+    width: 100%;
+    height: 50px;
+}
+
+#saved a {
+    color: #47a447;
+}
+
+.toolbar a:hover,
+.toolbar a:focus {
+    text-decoration: none;
+    color: #47a447;
+    background-color: white !important;
+}
+
+.toolbar li:hover,
+.toolbar li:focus {
+    text-decoration: none;
+    color: #47a447;
+}
+
+.toolbar .nav li a {
+    border-left: none;
+    height: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.toolbar .nav li {
+    float: right;
+    height: 30px;
+}
+
+.header {
+    margin-bottom: 0px;
+}
+
+.toolbar {
+    border-bottom: 1px solid #e5e5e5;
+}
+
 .page {
     background-color: white;
     padding: 1px;
@@ -183,6 +208,23 @@ body {
     margin-top: 5px;
     margin-bottom: 5px;
 }
+
+.offset-1 {
+    margin-left: 100px;
+}
+.offset-2 {
+    margin-left: 200px;
+}
+.offset-3 {
+    margin-left: 300px;
+}
+.offset-4 {
+    margin-left: 400px;
+}
+.offset-5 {
+    margin-left: 500px;
+}
+
 
 .offset-1 {
     margin-left: 100px;
@@ -232,7 +274,7 @@ body {
 .item-textarea-container {
     width: 90%;
     min-height: 100%;
-    background-color: snow;
+    background-color: #FEFFFE;
 }
 
 .item-textarea {
@@ -241,7 +283,7 @@ body {
     border: 0 none white;
     outline: none;
     resize: none;
-    background-color: snow;
+    background-color: #FEFFFE;
 }
 
 .item-textarea:active {
@@ -260,8 +302,9 @@ body {
 }
 
 .item-editable-div {
-    display: inline-block;
-    width: 90%;
+    float: right;
+    width: 100%;
+    height: 100%;
 }
 
 .offset-right-5 {
@@ -290,6 +333,25 @@ body {
 
 .item-button-1:hover{
     background-color: darkgray;
+}
+
+.item-button-1a {
+    float: left;
+    display: none;
+    width: 100%;
+    height: 50%;
+    border-top-left-radius: 20%;
+    border-top-right-radius: 20%;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom: 1px solid darkgray;
+    outline: none;
+    background-color:#d9534f;
+}
+
+.item-button-1a:hover{
+    background-color: #d2322d;
 }
 
 .item-button-2 {

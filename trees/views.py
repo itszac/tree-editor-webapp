@@ -196,7 +196,10 @@ def user_trees(request):
 
 
     
-def about(request):
-    dictionary = default_dictionary(request)
-    dictionary['active_page'] = 'about'
-    return render_to_response('about.html', dictionary, context_instance=RequestContext(request))
+def example(request):
+    dictionary = {}
+    dictionary['active'] = 'example'
+    if request.user.is_authenticated():
+        user = request.user
+        dictionary['user'] = user
+    return render_to_response('example.html', dictionary, context_instance=RequestContext(request))

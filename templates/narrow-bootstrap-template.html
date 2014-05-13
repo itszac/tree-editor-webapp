@@ -38,7 +38,11 @@
           {% else %}
           <li><a href="/">Home</a></li>
           {% endif %}
-          <li><a href="#">Example</a></li>
+          {% if active == 'example' %}
+          <li class="active"><a href="#">Example</a></li>
+          {% else %}
+          <li><a href="/example">Example</a></li>
+          {% endif %}
           {% if user.is_authenticated %}
           {% if active == 'my_trees' %}
           <li class = 'active'><a href='/my_trees'>Your Trees</a></li>

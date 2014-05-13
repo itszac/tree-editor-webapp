@@ -229,17 +229,17 @@ nav li {
 .offset-1 {
     margin-left: 100px;
 }
-.offset-2 {
-    margin-left: 200px;
+.offset-2 textarea {
+    width: 440px;
 }
-.offset-3 {
-    margin-left: 300px;
+.offset-3 textarea {
+    width: 340px;
 }
-.offset-4 {
-    margin-left: 400px;
+.offset-4 textarea {
+    margin-left: 240px;
 }
-.offset-5 {
-    margin-left: 500px;
+.offset-5 textarea {
+    margin-left: 140px;
 }
 
 .item-button-container {
@@ -310,6 +310,9 @@ nav li {
 .offset-right-5 {
     right: 30px;
     top: 100px;
+}
+.item-image-upload {
+    display: none !important;
 }
 
 .item-button-group {

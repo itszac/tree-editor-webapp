@@ -64,12 +64,13 @@
               <span class = 'item-button-group'>
                 <button class = 'item-button-1 delete-button'>Del</button>
                 <button class = 'item-button-1a confirm-delete-button'>Confirm</button>
-                <button class = 'item-button-2 jump-button'>Img</button>
+                <button class = 'item-button-2 image-upload-button'>Img</button>
                 <button class = 'item-button-3 new-sibling-button'>Sib</button>
                 <button class = 'item-button-4 new-child-button'>Ch</button>
               </span>
               <span class = 'item-textarea-container'>
                <textarea rows='1' class = 'item-textarea'>{{ node.content }}</textarea>
+               <input type = 'file' class = 'item-image-upload'>
                <input type = 'hidden' class = 'item-nest-level' value = '{{ node.nest_level }}'>
                <input type = 'hidden' class = 'item-id' value = '{{ node.id }}'>
                <input type = 'hidden' class = 'item-order' value = '{{ node.order }}'>
