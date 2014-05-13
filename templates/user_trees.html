@@ -6,15 +6,15 @@
     {% for tree in trees %}
       <div class='row'>
         <div class = 'col-md-11'>
-          <h4><a href = '/tree/{{ tree.url }}'>{{ tree.name }}</a>, with {{ tree.number_nodes }} nodes and {{ tree.number_words }} words</h4>
+          <h4><a href = '{{ root }}tree/{{ tree.url }}'>{{ tree.name }}</a>, with {{ tree.number_nodes }} nodes and {{ tree.number_words }} words</h4>
         </div>
         <div class = 'col-md-1'>
-          <h4><a href='/delete_tree/{{ tree.id }}/' class='tree-delete'><span class="glyphicon glyphicon-remove"></span></a></h4>
+          <h4><a href='{{ root }}delete_tree/{{ tree.id }}/' class='tree-delete'><span class="glyphicon glyphicon-remove"></span></a></h4>
         </div>
       </div>
     {% endfor %}
     </ull>
-    <form class = 'form-inline' action = '/new/' method='post'>
+    <form class = 'form-inline' action = '{{ root }}new/' method='post'>
       {% csrf_token %}
       <div class='form-group'>
         <label class = 'sr-only'>Name</label>

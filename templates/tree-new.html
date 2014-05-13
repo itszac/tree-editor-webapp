@@ -1,8 +1,8 @@
 {% extends 'narrow-bootstrap-template.html' %}
 {% block header_resources %}
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ STATIC_URL }}jumbotron-narrow.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ STATIC_URL }}tree-editor.css">
+    <link href="{{ STATIC_URL }}treeeditor-jumbotron-narrow.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ STATIC_URL }}treeeditor-editor.css">
 {% endblock %}
 {% block content %}
         <div class = 'toolbar'>
@@ -11,7 +11,7 @@
          <ul class = 'nav nav-toolbar'>
           <li class = 'rightnavitem'><a href='#' class='save'><span class="glyphicon glyphicon-search"></span></a></li>
           <li class = 'rightnavitem'><a href='#' class='save'><span class="glyphicon glyphicon-plus"></span></a></li>
-          <li class = 'rightnavitem'><a href='/save_tree/{{ tree.id }}/' class='save'><span class="glyphicon glyphicon-save"></span></a></li>
+          <li class = 'rightnavitem'><a href='{{ root }}save_tree/{{ tree.id }}/' class='save'><span class="glyphicon glyphicon-save"></span></a></li>
           <li class = 'rightnavitem' id = 'saved'><a href='#'>Saved!</a></li>
          </ul>
          </div>
@@ -86,5 +86,5 @@
         <script>window.jQuery || document.write('<script src="{{ STATIC_URL }}vendor/jquery-1.10.2.min.js"><\/script>')</script>
         <script src="{{ STATIC_URL }}plugins.js"></script>
         <script src="{{ STATIC_URL }}jquery.autosize.js"></script>
-        <script src="{{ STATIC_URL }}main.js"></script>
+        <script src="{{ STATIC_URL }}treeeditor-main.js"></script>
 {% endblock %}

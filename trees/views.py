@@ -1,5 +1,6 @@
 # Create your views here.
 from models import *
+from treeeditor.settings import DEBUG
 from django.template import RequestContext
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
@@ -13,11 +14,22 @@ import sys
 import datetime
 import json
 
-def index(request):
-    dictionary = {'active': 'home'}
+def default_dictionary(request):
+    dictionary = {}
+    if DEBUG == True:
+        dictionary['root'] = ''
+    else:
+        dictionary['root'] = 'treeeditor/'
     if request.user.is_authenticated():
         user = request.user
         dictionary['user'] = user
+    return dictionary
+
+
+
+def index(request):
+    dictionary = default_dictionary(request)
+    dictionary['active'] = 'home'
     return render_to_response('narrow-bootstrap-template.html', dictionary, context_instance=RequestContext(request))
 
 def new_tree(request):
@@ -56,7 +68,7 @@ def new_tree(request):
 
 
 def edit_tree(request, tree_url, nest_level = 0):
-    dictionary = {}
+    dictionary = default_dictionary(request)
     tree = Tree.objects.get(url = tree_url)
     nodes = Node.objects.filter(tree = tree).order_by('order')
     nodes_processed = []
@@ -109,9 +121,10 @@ def delete_tree(request, tree_id):
     
 
 def user_detail(request, user_id):
+    dictionary = default_dictionary(request)
     user = User.objects.get(pk = user_id)
     user_trees = Tree.objects.get(user = user)
-    dictionary = {'user': user, 'trees': user_trees}
+    dictionary['trees'] = user_trees
     return render_to_response('about.html', dictionary, context_instance=RequestContext(request))
 
 def login_user(request):
@@ -143,7 +156,8 @@ def logout_user(request):
     return redirect('/')
 
 def new_user(request):
-    dictionary = {'active': 'join'}
+    dictionary = default_dictionary(request)
+    dictionary['active'] = 'join'
     if request.method == 'POST': # If the form has been submitted...
         form = UserForm(request.POST) # A form bound to the POST 
         print >>sys.stderr, form.errors
@@ -168,7 +182,8 @@ def new_user(request):
     return render_to_response('new_user.html', dictionary, context_instance=RequestContext(request))
 
 def user_trees(request):
-    dictionary = {'active': 'my_trees'}
+    dictionary = default_dictionary(request)
+    dictionary['active'] = 'my_trees'
     if request.user.is_authenticated():
         user = request.user
         dictionary['user'] = user
@@ -197,7 +212,7 @@ def user_trees(request):
 
     
 def example(request):
-    dictionary = {}
+    dictionary = default_dictionary(request)
     dictionary['active'] = 'example'
     if request.user.is_authenticated():
         user = request.user

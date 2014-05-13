@@ -9,7 +9,7 @@
   <h2 class = 'form-header'>Join</h2>
   </div>
   </div>
-  <form class = 'form-horizontal' action='/sign_up/' method='post'>
+  <form class = 'form-horizontal' action='{{ root }}sign_up/' method='POST'>
     {% csrf_token %}
     
     {% if form.errors %}

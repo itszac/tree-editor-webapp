@@ -17,7 +17,7 @@
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="{{ STATIC_URL }}jumbotron-narrow.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}treeeditor-jumbotron-narrow.css" rel="stylesheet">
     {% endblock %}
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -36,25 +36,25 @@
           {% if active == 'home' %}
           <li class="active"><a href="#">Home</a></li>
           {% else %}
-          <li><a href="/">Home</a></li>
+          <li><a href="/{{ root }}">Home</a></li>
           {% endif %}
           {% if active == 'example' %}
           <li class="active"><a href="#">Example</a></li>
           {% else %}
-          <li><a href="/example">Example</a></li>
+          <li><a href="/{{ root }}example">Example</a></li>
           {% endif %}
           {% if user.is_authenticated %}
           {% if active == 'my_trees' %}
-          <li class = 'active'><a href='/my_trees'>Your Trees</a></li>
+          <li class = 'active'><a href='/{{ root }}my_trees'>Your Trees</a></li>
           {% else %}
-          <li><a href='/my_trees'>Your Trees</a></li>
+          <li><a href='/{{ root }}my_trees'>Your Trees</a></li>
           {% endif %}
-          <li><a href='/logout'>Log Out</a></li>
+          <li><a href='/{{ root }}logout'>Log Out</a></li>
           {% else %}
           {% if active == 'sign_up' %}
-          <li class="active"><a href="/sign_up">Sign Up</a></li>
+          <li class="active"><a href="/{{ root }}sign_up">Sign Up</a></li>
           {% else %}
-          <li><a href="/sign_up">Sign Up</a></li>
+          <li><a href="/{{ root }}sign_up">Sign Up</a></li>
           {% endif %}
           <li><a id = 'signin-button' href="#">Sign In</a></li>
           {% endif %}
@@ -62,7 +62,7 @@
         </ul>
         <h3 class="text-muted">Tree Editor</h3>
         {% if not user.is_authenticated %}
-        <form class="form-inline pull-right" id = 'signin-form' role="form">
+        <form action = '{{ root }}login' class="form-inline pull-right" id = 'signin-form' role="form">
   <div class="form-group">
     <label class="sr-only" for="exampleInputEmail2">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
@@ -79,8 +79,8 @@
       <div class="jumbotron">
         <h1>Tree Editor</h1>
         <p class="lead">Lots of information you want to record is heirarchial.  Using a tree instead of a list or document gives structure to your notes, tasks, or ideas</p>
-        <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a>
-        <a class="btn btn-lg btn-success" href="#" role="button">Start a tree</a></p>
+        <p><a class="btn btn-lg btn-success" href="/{{ root }}sign_up" role="button">Sign up today</a>
+        <a class="btn btn-lg btn-success" href="/{{ root }}example" role="button">Start a tree</a></p>
       </div>
 
       <div class="row marketing">
@@ -119,7 +119,7 @@
         <script>window.jQuery || document.write('<script src="{{ STATIC_URL }}vendor/jquery-1.10.2.min.js"><\/script>')</script>
         <script src="{{ STATIC_URL }}plugins.js"></script>
         <script src="{{ STATIC_URL }}jquery.autosize.js"></script>
-        <script src="{{ STATIC_URL }}main.js"></script>
+        <script src="{{ STATIC_URL }}treeeditor-main.js"></script>
   {% endblock %}
   </body>
 </html>
