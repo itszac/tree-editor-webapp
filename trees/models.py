@@ -19,7 +19,9 @@ class Node(models.Model):
     nest_level = models.IntegerField()
     parent = models.ForeignKey('Node', blank = True, null = True)
     order = models.IntegerField()
-    content = models.TextField()
+    content = models.TextField(blank = True)
+    image = models.ImageField(blank = True, null = True, upload_to = '/media')
+    content_type = models.CharField(blank = True, max_length = 50)
 
 class NodeForm(forms.Form):
     content = forms.CharField()

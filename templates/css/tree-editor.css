@@ -159,6 +159,10 @@ nav li {
     height: 50px;
 }
 
+#saved a {
+    color: #47a447;
+}
+
 .toolbar a:hover,
 .toolbar a:focus {
     text-decoration: none;

@@ -7,12 +7,12 @@
 {% block content %}
         <div class = 'toolbar'>
          <div class = 'row'>
-         <div class = 'col-md-5 col-md-offset-7'>
+         <div class = 'col-md-6 col-md-offset-6'>
          <ul class = 'nav nav-toolbar'>
-          <li class = 'navitem'><a>Type</a></li>
           <li class = 'rightnavitem'><a href='#' class='save'><span class="glyphicon glyphicon-search"></span></a></li>
           <li class = 'rightnavitem'><a href='#' class='save'><span class="glyphicon glyphicon-plus"></span></a></li>
           <li class = 'rightnavitem'><a href='/save_tree/{{ tree.id }}/' class='save'><span class="glyphicon glyphicon-save"></span></a></li>
+          <li class = 'rightnavitem' id = 'saved'><a href='#'>Saved!</a></li>
          </ul>
          </div>
          </div>
@@ -64,7 +64,7 @@
               <span class = 'item-button-group'>
                 <button class = 'item-button-1 delete-button'>Del</button>
                 <button class = 'item-button-1a confirm-delete-button'>Confirm</button>
-                <button class = 'item-button-2 jump-button'>Jmp</button>
+                <button class = 'item-button-2 jump-button'>Img</button>
                 <button class = 'item-button-3 new-sibling-button'>Sib</button>
                 <button class = 'item-button-4 new-child-button'>Ch</button>
               </span>

@@ -1,6 +1,7 @@
 $(document).ready(function(){
     //item/node object
     $('#signin-form').hide();
+    $('#saved').hide();
 
     $('#signin-button').click(function(event){
         event.preventDefault();
@@ -147,7 +148,7 @@ $(document).ready(function(){
             data: {number_items: number_items,
                 data : JSON.stringify({items : item_list})}
         }).done(function() {
-                alert( "Data Saved" );
+                $('#saved').show(800).delay(3000).fadeOut();
         });
     });
 
