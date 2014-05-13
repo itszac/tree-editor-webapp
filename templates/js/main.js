@@ -75,21 +75,14 @@ $(document).ready(function(){
 
     $('.page').on('click', '.new-sibling-button', function (event){
         event.preventDefault();
-        var item = $(this).closest('.item').clone(true);
-        item.find('.item-textarea:first').autosize();
-        var item_container = $('<div></div>').append(item);
-        item_container.addClass('item-container');
+        var item = $(item_html);
         var new_sibling = $(this).closest('.item-container').after(item);
-        var offset_string = $(this).closest('.item').attr('class').slice(-1);
-        console.log(offset_string);
+        var offset_string = $(this).closest('.item').find('.item-nest-level').val();
         var offset = parseInt(offset_string, 10);
-        console.log(new_sibling.find('.item'))
-        new_sibling.find('.item').removeClass().addClass('item offset-' + offset.toString());
-        console.log(new_sibling.find('.item'))
         var id = $('.item').length + 1;
-        new_sibling.find('.item-textarea').val('');
-        new_sibling.find('.item-nest-level').val(offset);
-        new_sibling.find('.item-id').val(id);
+        item.find('.item-textarea').val('');
+        item.find('.item-nest-level').val(offset);
+        item.find('.item-id').val(id);
         updateOrder();
         $('.item-textarea').autosize(); 
         $('.item-textarea').trigger('autosize.resize'); 
@@ -97,20 +90,15 @@ $(document).ready(function(){
 
     $('.page').on('click', '.new-child-button', function (event){
         event.preventDefault();
-        var item = $(this).closest('.item').clone(true, true);
-        item.find('.item-textarea:first').autosize();
-        var offset_string = $(this).closest('.item').attr('class').slice(-1);
-        var offset = parseInt(offset_string, 10) + 1;
+        var item = $(item_html);
         var id = $('.item').length + 1;
-        item.removeClass().addClass('item offset-' + offset.toString());
-        var item_container = $('<div></div>').append(item);
-        item_container.addClass('item-container');
+        var offset_string = $(this).closest('.item').find('.item-nest-level').val();
+        var offset = parseInt(offset_string, 10) + 1;
         var new_child = $(this).closest('.item').after(item);
-        new_child.find('.item').removeClass().addClass('item offset-' + offset.toString());
         $('.item-textarea').trigger('autosize.resize'); 
-        new_child.find('.item-textarea').val('');
-        new_child.find('.item-nest-level').val(offset);
-        new_child.find('.item-id').val(id);
+        item.find('.item-textarea').val('');
+        item.find('.item-nest-level').val(offset);
+        item.find('.item-id').val(id);
         updateOrder();
         $('.item-textarea').autosize(); 
         $('.item-textarea').trigger('autosize.resize'); 
@@ -168,6 +156,8 @@ $(document).ready(function(){
         $('.item').each( function () {
             i = i + 1;
             $(this).find('order').val(i);
+            var nest_level = $(this).find('.item-nest-level').val().toString();
+            $(this).removeClass().addClass('item offset-'+nest_level)
         });
     };
 
